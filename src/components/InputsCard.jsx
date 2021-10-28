@@ -2,14 +2,21 @@ import React from 'react';
 import TipSelect from './TipSelect';
 import '../styles/InputsCard.css';
 
-export default function InputsCard() {
+export default function InputsCard(props) {
   return (
     <div className="inputs-card">
       <div className="input-container">
         <label htmlFor="#input-bill" className="input-label">
           Bill
         </label>
-        <input type="text" id="input-bill" className="input input-bill" />
+        <input
+          type="text"
+          id="input-bill"
+          className="input input-bill"
+          onInput={(e) => {
+            props.changeBill(e.target.value);
+          }}
+        />
       </div>
 
       <div className="input-container">
@@ -21,7 +28,14 @@ export default function InputsCard() {
         <label htmlFor="#input-persons" className="input-label">
           Number Of People
         </label>
-        <input type="text" id="input-persons" className="input input-persons" />
+        <input
+          type="text"
+          id="input-persons"
+          className="input input-persons"
+          onInput={(e) => {
+            props.changePersons(e.target.value);
+          }}
+        />
       </div>
     </div>
   );

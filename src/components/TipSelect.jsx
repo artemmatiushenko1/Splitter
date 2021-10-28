@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/TipSelect.css';
 
-export default function TipSelect(props) {
+export default function TipSelect() {
   return (
     <div className="tip-btns-group">
-      <button className="tip-btn">5%</button>
+      <button className="tip-btn tip-btn--active">5%</button>
       <button className="tip-btn">10%</button>
       <button className="tip-btn">15%</button>
       <button className="tip-btn">25%</button>
