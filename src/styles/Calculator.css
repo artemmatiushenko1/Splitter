@@ -1,0 +1,15 @@
+.calculator {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: hsl(0, 0%, 100%);
+  width: 92rem;
+  height: 48rem;
+  box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.1);
+  border-radius: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 4.8rem;
+  padding: 3rem;
+}
