@@ -1,21 +1,28 @@
 import React from 'react';
 import TipSelect from './TipSelect';
+import '../styles/InputsCard.css';
 
 export default function InputsCard() {
   return (
     <div className="inputs-card">
-      <input type="text" id="input-bill" />
-      <label htmlFor="#input-bill" className="input-bill__label">
-        Bill
-      </label>
+      <div className="input-container">
+        <label htmlFor="#input-bill" className="input-label">
+          Bill
+        </label>
+        <input type="text" id="input-bill" className="input input-bill" />
+      </div>
 
-      <p className="tip-select-label">Select tip %</p>
-      <TipSelect />
+      <div className="input-container">
+        <p className="input-label">Select tip %</p>
+        <TipSelect />
+      </div>
 
-      <input type="text" id="input-persons" />
-      <label htmlFor="#input-persons" className="input-persons__label">
-        Number Of People
-      </label>
+      <div className="input-container">
+        <label htmlFor="#input-persons" className="input-label">
+          Number Of People
+        </label>
+        <input type="text" id="input-persons" className="input input-persons" />
+      </div>
     </div>
   );
 }
