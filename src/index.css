@@ -16,3 +16,8 @@ body {
   font-weight: 400;
   font-family: 'Space Mono';
 }
+
+::selection {
+  color: #fff;
+  background: hsl(172, 67%, 45%);
+}

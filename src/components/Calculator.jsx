@@ -6,6 +6,7 @@ import InputsCard from './InputsCard';
 export default function Calculator() {
   const [bill, setBill] = useState(0);
   const [persons, setPersons] = useState(0);
+  const [tip, setTip] = useState(0);
 
   const changeBill = (bill) => {
     setBill(parseInt(bill));
@@ -13,13 +14,20 @@ export default function Calculator() {
 
   const changePersons = (persons) => {
     setPersons(parseInt(persons));
-    console.log(parseInt(persons));
+  };
+
+  const changeTip = (tip) => {
+    setTip(parseInt(tip));
   };
 
   return (
     <div className="calculator">
-      <InputsCard changeBill={changeBill} changePersons={changePersons} />
-      <ComputedCard bill={bill} persons={persons} />
+      <InputsCard
+        changeBill={changeBill}
+        changePersons={changePersons}
+        changeTip={changeTip}
+      />
+      <ComputedCard bill={bill} persons={persons} tip={tip} />
     </div>
   );
 }

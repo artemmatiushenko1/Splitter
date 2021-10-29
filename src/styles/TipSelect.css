@@ -31,8 +31,8 @@
   border: 3px solid transparent;
   background-color: hsl(202, 50%, 97%);
   font-size: 2rem;
-  text-align: end;
-  padding: 0.7rem 1rem;
+  text-align: center;
+  padding: 0.4rem 1rem;
   border-radius: 0.5rem;
   font-family: inherit;
   font-weight: 700;

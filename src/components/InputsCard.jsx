@@ -3,6 +3,8 @@ import TipSelect from './TipSelect';
 import '../styles/InputsCard.css';
 
 export default function InputsCard(props) {
+  const { changeBill, changePersons, changeTip } = props;
+
   return (
     <div className="inputs-card">
       <div className="input-container">
@@ -14,14 +16,14 @@ export default function InputsCard(props) {
           id="input-bill"
           className="input input-bill"
           onInput={(e) => {
-            props.changeBill(e.target.value);
+            changeBill(e.target.value);
           }}
         />
       </div>
 
       <div className="input-container">
         <p className="input-label">Select tip %</p>
-        <TipSelect />
+        <TipSelect changeTip={changeTip} />
       </div>
 
       <div className="input-container">
@@ -33,7 +35,7 @@ export default function InputsCard(props) {
           id="input-persons"
           className="input input-persons"
           onInput={(e) => {
-            props.changePersons(e.target.value);
+            changePersons(e.target.value);
           }}
         />
       </div>
