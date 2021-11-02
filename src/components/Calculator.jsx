@@ -20,6 +20,12 @@ export default function Calculator() {
     setTip(parseInt(tip));
   };
 
+  const resetValues = () => {
+    setBill(0);
+    setPersons(0);
+    setTip(0);
+  };
+
   return (
     <div className="calculator">
       <InputsCard
@@ -27,7 +33,12 @@ export default function Calculator() {
         changePersons={changePersons}
         changeTip={changeTip}
       />
-      <ComputedCard bill={bill} persons={persons} tip={tip} />
+      <ComputedCard
+        bill={bill}
+        persons={persons}
+        tip={tip}
+        onReset={resetValues}
+      />
     </div>
   );
 }

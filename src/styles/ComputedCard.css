@@ -41,7 +41,7 @@
   color: hsl(183, 94%, 19%);
   font-weight: 700;
   font-size: 1.5rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 1.2rem 0;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -50,4 +50,8 @@
 .btn-reset:hover {
   background-color: hsl(173, 61%, 77%);
   color: hsl(183, 100%, 15%);
+}
+
+.btn-reset--active {
+  background-color: hsl(172, 67%, 45%);
 }

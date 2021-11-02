@@ -15,6 +15,7 @@ export default function InputsCard(props) {
           type="text"
           id="input-bill"
           className="input input-bill"
+          placeholder="0"
           onInput={(e) => {
             changeBill(e.target.value);
           }}
@@ -34,6 +35,7 @@ export default function InputsCard(props) {
           type="text"
           id="input-persons"
           className="input input-persons"
+          placeholder="0"
           onInput={(e) => {
             changePersons(e.target.value);
           }}
