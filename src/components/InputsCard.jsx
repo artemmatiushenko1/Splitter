@@ -2,9 +2,7 @@ import React from 'react';
 import TipSelect from './TipSelect';
 import '../styles/InputsCard.css';
 
-export default function InputsCard(props) {
-  const { changeBill, changePersons, changeTip } = props;
-
+export default function InputsCard({ changeBill, changePersons, changeTip }) {
   return (
     <div className="inputs-card">
       <div className="input-container">

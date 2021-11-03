@@ -3,8 +3,9 @@ import Calculator from './components/Calculator.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <div className="logo">
+    <main className="App">
+      <div className="App__logo">
+        <h1 className="App__name">SPLITTER</h1>
         <svg xmlns="http://www.w3.org/2000/svg" width="87" height="54">
           <path
             fill="#3D6666"
@@ -13,7 +14,7 @@ function App() {
         </svg>
       </div>
       <Calculator />
-    </div>
+    </main>
   );
 }
 

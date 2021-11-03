@@ -1,3 +1,15 @@
+:root {
+  --color-primary: hsl(172, 67%, 45%);
+  --color-secondary: hsl(183, 100%, 15%);
+  --color-tertiary: hsl(0, 0%, 100%);
+  --color-secondary-lighter: hsl(185, 25%, 53%);
+  --color-btn-hover: hsl(173, 61%, 77%);
+  --color-input-bc: hsl(202, 50%, 97%);
+  --color-input-label: hsl(186, 12%, 46%);
+  --color-bc: hsl(185, 41%, 84%);
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -12,12 +24,12 @@ html {
 }
 
 body {
-  background-color: hsl(185, 41%, 84%);
+  background-color: var(--color-bc);
   font-weight: 400;
   font-family: 'Space Mono';
 }
 
 ::selection {
   color: #fff;
-  background: hsl(172, 67%, 45%);
+  background: var(--color-primary);
 }

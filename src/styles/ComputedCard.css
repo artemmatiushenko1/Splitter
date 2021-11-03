@@ -1,5 +1,5 @@
 .computed-card {
-  background-color: hsl(183, 100%, 15%);
+  background-color: var(--color-secondary);
   border-radius: 1.8rem;
   padding: 4rem;
   display: grid;
@@ -13,14 +13,16 @@
 }
 
 .amount__name {
-  color: hsl(0, 0%, 100%);
+  color: var(--color-tertiary);
   font-size: 1.3rem;
-  align-self: end;
+  align-self: center;
+  grid-row: 1 / 3;
 }
 
 .amount__per-label {
   font-size: 1.2rem;
-  color: hsl(185, 25%, 53%);
+  color: var(--color-secondary-lighter);
+  font-weight: 400;
 }
 
 .amount__value {
@@ -28,17 +30,18 @@
   grid-column: 2 / 3;
   justify-self: end;
   align-self: center;
-  color: hsl(172, 67%, 45%);
+  color: var(--color-primary);
   font-size: 4rem;
+  font-weight: 700;
 }
 
 .btn-reset {
   align-self: end;
-  background-color: hsl(183, 79%, 24%);
+  background-color: var(--color-primary);
   border: none;
   font-family: inherit;
   text-transform: uppercase;
-  color: hsl(183, 94%, 19%);
+  color: var(--color-secondary);
   font-weight: 700;
   font-size: 1.5rem;
   border-radius: 0.5rem;
@@ -47,11 +50,11 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-reset:hover {
-  background-color: hsl(173, 61%, 77%);
-  color: hsl(183, 100%, 15%);
+.btn-reset:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
-.btn-reset--active {
-  background-color: hsl(172, 67%, 45%);
+.btn-reset:hover:not(:disabled) {
+  background-color: var(--color-btn-hover);
 }

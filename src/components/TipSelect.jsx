@@ -1,10 +1,8 @@
 import React from 'react';
 import '../styles/TipSelect.css';
 
-export default function TipSelect(props) {
-  const { changeTip } = props;
+export default function TipSelect({ changeTip }) {
   const allTipBtns = document.querySelectorAll('.tip-btn');
-
   const onTipSelected = (e) => {
     e.preventDefault();
     const { target: activeTip } = e;

@@ -30,7 +30,6 @@ export default function Calculator() {
     setBill(0);
     setPersons(0);
     setTip(0);
-    console.log('Form was reseted');
   };
 
   return (

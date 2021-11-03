@@ -22,3 +22,7 @@
     row-gap: 4rem;
   }
 }
+
+.App__name {
+  display: none;
+}
