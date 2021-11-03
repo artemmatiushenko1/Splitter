@@ -11,3 +11,14 @@
   align-items: center;
   row-gap: 8rem;
 }
+
+@media only screen and (max-width: 50.625em) {
+  .App {
+    position: relative;
+    padding-top: 5rem;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    row-gap: 4rem;
+  }
+}
