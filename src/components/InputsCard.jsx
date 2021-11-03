@@ -6,7 +6,7 @@ export default function InputsCard({ changeBill, changePersons, changeTip }) {
   return (
     <div className="inputs-card">
       <div className="input-container">
-        <label htmlFor="#input-bill" className="input-label">
+        <label htmlFor="input-bill" className="input-label">
           Bill
         </label>
         <input
@@ -26,7 +26,7 @@ export default function InputsCard({ changeBill, changePersons, changeTip }) {
       </div>
 
       <div className="input-container">
-        <label htmlFor="#input-persons" className="input-label">
+        <label htmlFor="input-persons" className="input-label">
           Number Of People
         </label>
         <input
