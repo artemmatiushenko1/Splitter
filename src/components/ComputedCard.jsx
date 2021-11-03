@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/ComputedCard.css';
 
 export default function ComputedCard(props) {
-  const { bill, persons, tip, onReset } = props;
+  const { bill, persons, tip } = props;
 
   const getTotal = (bill, persons) => {
     const computedTip = getTip(bill, persons, tip);
@@ -39,8 +39,8 @@ export default function ComputedCard(props) {
       </div>
 
       <button
+        type="reset"
         className={`btn-reset ${bill && persons ? 'btn-reset--active' : ''}`}
-        onClick={onReset}
       >
         Reset
       </button>

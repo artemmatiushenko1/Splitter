@@ -20,25 +20,27 @@ export default function Calculator() {
     setTip(parseInt(tip));
   };
 
-  const resetValues = () => {
+  const onFormReset = () => {
+    const allTipBtns = document.querySelectorAll('.tip-btn');
+    const customTipInput = document.querySelectorAll('.custom-tip-input');
+    allTipBtns.forEach((btn) => {
+      btn.classList.remove('tip-btn--active');
+    });
+    customTipInput.value = '';
     setBill(0);
     setPersons(0);
     setTip(0);
+    console.log('Form was reseted');
   };
 
   return (
-    <div className="calculator">
+    <form className="calculator" autoComplete="off" onReset={onFormReset}>
       <InputsCard
         changeBill={changeBill}
         changePersons={changePersons}
         changeTip={changeTip}
       />
-      <ComputedCard
-        bill={bill}
-        persons={persons}
-        tip={tip}
-        onReset={resetValues}
-      />
-    </div>
+      <ComputedCard bill={bill} persons={persons} tip={tip} />
+    </form>
   );
 }

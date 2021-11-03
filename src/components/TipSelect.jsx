@@ -6,6 +6,7 @@ export default function TipSelect(props) {
   const allTipBtns = document.querySelectorAll('.tip-btn');
 
   const onTipSelected = (e) => {
+    e.preventDefault();
     const { target: activeTip } = e;
     if (activeTip.classList.contains('custom-tip-input')) {
       activeTip.dataset['tip'] = e.target.value;
