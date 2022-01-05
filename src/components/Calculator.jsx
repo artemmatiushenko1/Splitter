@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/Calculator.css';
 import ComputedCard from './ComputedCard';
 import InputsCard from './InputsCard';
+import CalculatorContext from '../store/calculator-context';
 
 export default function Calculator() {
   const [bill, setBill] = useState(0);
@@ -33,13 +34,16 @@ export default function Calculator() {
   };
 
   return (
-    <form className="calculator" autoComplete="off" onReset={onFormReset}>
-      <InputsCard
-        changeBill={changeBill}
-        changePersons={changePersons}
-        changeTip={changeTip}
-      />
-      <ComputedCard bill={bill} persons={persons} tip={tip} />
-    </form>
+    <CalculatorContext.Provider value={{ bill, persons, tip }}>
+      <form className="calculator" autoComplete="off" onReset={onFormReset}>
+        <InputsCard
+          changeBill={changeBill}
+          changePersons={changePersons}
+          changeTip={changeTip}
+        />
+        {/* TODO: move ComputedCard outside of the form */}
+        <ComputedCard />
+      </form>
+    </CalculatorContext.Provider>
   );
 }

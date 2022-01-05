@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CalculatorContext from '../store/calculator-context';
 import '../styles/ComputedCard.css';
 
 const isValid = (...values) => {
@@ -7,10 +8,13 @@ const isValid = (...values) => {
       return false;
     }
   }
+
   return true;
 };
 
-export default function ComputedCard({ bill, persons, tip }) {
+export default function ComputedCard() {
+  const { bill, persons, tip } = useContext(CalculatorContext);
+
   const getTotal = (bill, persons) => {
     return isValid(bill, persons)
       ? bill / persons + getTip(bill, persons, tip)
