@@ -12,7 +12,7 @@ const isValid = (...values) => {
   return true;
 };
 
-export default function ComputedCard() {
+const ComputedCard = () => {
   const { bill, persons, tip } = useContext(CalculatorContext);
 
   const getTotal = (bill, persons) => {
@@ -56,4 +56,6 @@ export default function ComputedCard() {
       </button>
     </div>
   );
-}
+};
+
+export default ComputedCard;

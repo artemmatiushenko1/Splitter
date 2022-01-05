@@ -1,7 +1,7 @@
 import './App.css';
 import Calculator from './components/Calculator.jsx';
 
-function App() {
+const App = () => {
   return (
     <main className="App" role="main">
       <div className="App__logo">
@@ -16,6 +16,6 @@ function App() {
       <Calculator />
     </main>
   );
-}
+};
 
 export default App;

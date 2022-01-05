@@ -41,10 +41,6 @@
   cursor: pointer;
 }
 
-.custom-tip-input:focus {
-  outline: 3px solid var(--color-primary);
-}
-
 .custom-tip-input::placeholder {
   text-align: center;
 }
