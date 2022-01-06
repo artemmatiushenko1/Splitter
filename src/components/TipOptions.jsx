@@ -47,13 +47,15 @@ const TipOptions = (props) => {
           );
         })}
         <Input
-          type="number"
-          placeholder="Custom"
           className="custom-tip-input"
-          id={'custom-tip'}
-          value={customTip}
-          onChange={onCustomTipChangeHandler}
-          onFocus={onCustomTipChangeHandler}
+          input={{
+            type: 'number',
+            placeholder: 'Custom',
+            'data-id': 'custom-tip',
+            value: customTip,
+            onChange: onCustomTipChangeHandler,
+            onFocus: onCustomTipChangeHandler,
+          }}
         />
       </div>
     </div>

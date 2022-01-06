@@ -10,13 +10,15 @@ const SplitForm = (props) => {
   return (
     <form className="inputs-card" autoComplete="off">
       <Input
-        id="input-bill"
-        className="input-bill"
-        type="number"
-        value={bill}
-        placeholder="0"
         label="Bill"
-        onChange={props.onBillChange}
+        className="input-bill"
+        id="input-bill"
+        input={{
+          type: 'number',
+          value: bill,
+          placeholder: '0',
+          onChange: props.onBillChange,
+        }}
       />
       <TipOptions
         value={tip}
@@ -25,13 +27,15 @@ const SplitForm = (props) => {
         onTipChange={props.onTipChange}
       />
       <Input
-        id="input-persons"
-        className="input-persons"
-        type="number"
-        value={persons}
-        placeholder="0"
         label="Number of People"
-        onChange={props.onPersonsChange}
+        className="input-persons"
+        id="input-persons"
+        input={{
+          type: 'number',
+          value: persons,
+          placeholder: '0',
+          onChange: props.onPersonsChange,
+        }}
       />
     </form>
   );

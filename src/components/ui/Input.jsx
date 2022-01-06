@@ -8,12 +8,8 @@ const Input = (props) => {
       </label>
       <input
         className={'input ' + props.className}
-        type={props.type}
-        value={props.value}
-        data-id={props.id}
-        placeholder={props.placeholder}
-        onChange={props.onChange}
-        onFocus={props.onFocus}
+        id={props.id}
+        {...props.input}
       />
     </div>
   );
