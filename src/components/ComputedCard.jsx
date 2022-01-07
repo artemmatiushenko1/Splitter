@@ -8,13 +8,13 @@ const isValid = (...values) => {
       return false;
     }
   }
-
   return true;
 };
 
-const ComputedCard = () => {
+const ComputedCard = (props) => {
   const { bill, persons, tip } = useContext(CalculatorContext);
 
+  //TODO: try to move all of the calculating logic into Calculator.jsx
   const getTotal = (bill, persons) => {
     return isValid(bill, persons)
       ? bill / persons + getTip(bill, persons, tip)
@@ -36,17 +36,15 @@ const ComputedCard = () => {
           ${getTip(bill, persons, tip).toFixed(2)}
         </output>
       </div>
-
       <div className="amount total-amount">
         <h2 className="amount__name">
           Total <br />
           <span className="amount__per-label">/ person</span>
         </h2>
         <output className="amount__value">
-          ${getTotal(bill, persons).toFixed(2)}
+          ${getTotal(bill, persons, tip).toFixed(2)}
         </output>
       </div>
-
       <button
         type="reset"
         className="btn-reset"

@@ -21,6 +21,10 @@
   transition: border 0.2s ease;
 }
 
+.input.invalid:focus {
+  outline-color: #ff7979;
+}
+
 .input::-webkit-outer-spin-button,
 .input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -52,4 +56,9 @@
   font-weight: 700;
   color: var(--color-input-label);
   margin-bottom: 1rem;
+}
+
+.input-label--error {
+  color: #ff7979;
+  float: right;
 }

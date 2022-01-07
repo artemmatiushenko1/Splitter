@@ -5,31 +5,46 @@ import SplitForm from './SplitForm';
 import CalculatorContext from '../store/calculator-context';
 
 const Calculator = () => {
-  const [bill, setBill] = useState('');
-  const [tip, setTip] = useState('');
-  const [persons, setPersons] = useState('');
+  const [enteredData, setEnteredData] = useState({
+    bill: '',
+    tip: '',
+    persons: '',
+  });
 
-  const billChangeHandler = (e) => {
-    setBill(e.target.value);
+  const calculateTip = (bill, tip, persons) => {
+    const result = (bill * tip) / 100 / persons;
+    return result;
   };
 
-  const personsChangeHandler = (e) => {
-    setPersons(e.target.value);
+  const calculateTotal = (bill, tip, persons) => {
+    const tipPerPerson = calculateTip(bill, persons, tip);
+    const totalPerPerson = bill / persons + tip;
+    return {
+      tip: tipPerPerson,
+      total: totalPerPerson,
+    };
   };
 
-  const tipChangeHandler = (tipValue) => {
-    setTip(tipValue);
+  const onFormInputHandler = (data) => {
+    setEnteredData((prevState) => {
+      return {
+        ...prevState,
+        ...data,
+      };
+    });
   };
 
   return (
-    <CalculatorContext.Provider value={{ bill, persons, tip }}>
+    <CalculatorContext.Provider value={{ ...enteredData }}>
       <div className="calculator">
-        <SplitForm
-          onBillChange={billChangeHandler}
-          onPersonsChange={personsChangeHandler}
-          onTipChange={tipChangeHandler}
+        <SplitForm onInput={onFormInputHandler} />
+        <ComputedCard
+          values={calculateTotal(
+            parseInt(enteredData.bill),
+            parseInt(enteredData.tip),
+            parseInt(enteredData.persons)
+          )}
         />
-        <ComputedCard />
       </div>
     </CalculatorContext.Provider>
   );
