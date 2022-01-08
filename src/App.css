@@ -1,4 +1,4 @@
-.App {
+.app {
   font-size: 1.6rem;
   position: absolute;
   top: 50%;
@@ -13,7 +13,7 @@
 }
 
 @media only screen and (max-width: 50.625em) {
-  .App {
+  .app {
     position: relative;
     padding-top: 5rem;
     top: 0;
@@ -23,6 +23,6 @@
   }
 }
 
-.App__name {
+.app__name {
   display: none;
 }

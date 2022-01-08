@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import '../styles/InputsCard.css';
+import '../styles/SplitForm.css';
 import Input from './ui/Input';
 import TipOptions from './TipOptions';
 import CalculatorContext from '../store/calculator-context';
@@ -8,7 +8,7 @@ const SplitForm = (props) => {
   const { bill, tip, persons, isPersonsValid } = useContext(CalculatorContext);
 
   return (
-    <form className="inputs-card" autoComplete="off">
+    <form className="split-form" autoComplete="off">
       <Input
         label="Bill"
         className="input-bill"

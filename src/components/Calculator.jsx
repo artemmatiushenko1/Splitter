@@ -66,14 +66,14 @@ const Calculator = () => {
         totalPerPerson,
       }}
     >
-      <div className="calculator">
+      <main className="calculator">
         <SplitForm
           onBillInput={onBillChangeHandler}
           onTipInput={onTipChangeHandler}
           onPersonsInput={onPersonsChangeHandler}
         />
         <ComputedCard onReset={onFormResetHandler} />
-      </div>
+      </main>
     </CalculatorContext.Provider>
   );
 };
