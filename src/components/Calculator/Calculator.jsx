@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import '../styles/Calculator.css';
-import ComputedCard from './ComputedCard';
-import SplitForm from './SplitForm';
-import CalculatorContext from '../store/calculator-context';
+import './Calculator.css';
+import OutputCard from '../OutputCard/OutputCard';
+import SplitForm from '../SplitForm/SplitForm';
+import CalculatorContext from '../../store/calculator-context';
 
 const Calculator = () => {
   const [bill, setBill] = useState('');
@@ -55,24 +55,24 @@ const Calculator = () => {
     setTotalPerPerson('');
   };
 
+  const providedValues = {
+    bill,
+    tip,
+    persons,
+    isPersonsValid,
+    tipPerPerson,
+    totalPerPerson,
+  };
+
   return (
-    <CalculatorContext.Provider
-      value={{
-        bill,
-        tip,
-        persons,
-        isPersonsValid,
-        tipPerPerson,
-        totalPerPerson,
-      }}
-    >
+    <CalculatorContext.Provider value={providedValues}>
       <main className="calculator">
         <SplitForm
           onBillInput={onBillChangeHandler}
           onTipInput={onTipChangeHandler}
           onPersonsInput={onPersonsChangeHandler}
         />
-        <ComputedCard onReset={onFormResetHandler} />
+        <OutputCard onReset={onFormResetHandler} />
       </main>
     </CalculatorContext.Provider>
   );

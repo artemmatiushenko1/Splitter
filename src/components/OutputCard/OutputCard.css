@@ -1,0 +1,8 @@
+.output-card {
+  background-color: var(--color-secondary);
+  border-radius: 1.8rem;
+  padding: 4rem;
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 6rem;
+}

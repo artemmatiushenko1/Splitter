@@ -1,10 +1,10 @@
-.tip-btns-group {
+.options-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
   gap: 1.3rem;
 }
 
-.tip-btn {
+.option {
   font-size: 2rem;
   font-family: inherit;
   border: none;
@@ -17,28 +17,19 @@
   transition: background-color 0.2s ease;
 }
 
-.tip-btn--active {
+.option--active {
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
 
-.tip-btn:hover {
+.option:hover {
   background-color: var(--color-btn-hover);
   color: var(--color-secondary);
 }
 
 .custom-tip-input {
-  border: 3px solid transparent;
-  background-color: var(--color-input-bc);
-  font-size: 2rem;
   text-align: center;
   padding: 0.4rem 1rem;
-  border-radius: 0.5rem;
-  font-family: inherit;
-  font-weight: 700;
-  color: var(--color-secondary);
-  transition: outline 0.2s ease;
-  cursor: pointer;
 }
 
 .custom-tip-input::placeholder {

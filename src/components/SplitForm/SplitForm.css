@@ -1,0 +1,12 @@
+.split-form {
+  display: grid;
+  row-gap: 4.5rem;
+}
+
+.input-bill {
+  background-image: url('../../assets/images/icon-dollar.svg');
+}
+
+.input-persons {
+  background-image: url('../../assets/images/icon-person.svg');
+}

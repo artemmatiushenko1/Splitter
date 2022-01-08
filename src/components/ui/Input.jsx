@@ -1,4 +1,5 @@
 import React from 'react';
+import './Input.css';
 
 const Label = (props) => {
   const classNames = `input-label ${props.className || ''}`;
@@ -11,20 +12,20 @@ const Label = (props) => {
 };
 
 const Input = (props) => {
+  const isValid = props.isValid === false;
+
   return (
     <div className="input-container">
       <Label id={props.id} content={props.label} />
-      {props.isValid === false && (
+      {isValid && (
         <Label
           id={props.id}
           content={props.errorLabel}
-          className={'input-label--error'}
+          className="input-label--error"
         />
       )}
       <input
-        className={`input ${props.className} ${
-          props.isValid === false ? 'invalid' : ''
-        }`}
+        className={`input ${props.className} ${isValid ? 'invalid' : ''}`}
         id={props.id}
         {...props.input}
       />

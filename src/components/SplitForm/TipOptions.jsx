@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/TipSelect.css';
-import Input from './ui/Input';
+import './TipOptions.css';
+import Input from '../ui/Input';
 
 const Option = (props) => {
   return (
     <button
-      className={`tip-btn ${props.className}`}
+      className={`option ${props.className}`}
       data-tip={props.value}
       data-id={props.id}
       onClick={props.onSelected}
@@ -26,14 +26,14 @@ const TipOptions = (props) => {
     }
   }, [props.value]);
 
-  const onTipSelected = (e) => {
+  const onOptionSelected = (e) => {
     e.preventDefault();
     setSelectedOptionId(parseInt(e.target.dataset['id']));
     props.onTipChange(e.target.dataset['tip']);
   };
 
-  const onCustomTipChangeHandler = (e) => {
-    setSelectedOptionId(e.target.dataset['id']);
+  const onCustomOptionChangeHandler = (e) => {
+    setSelectedOptionId(e.target.id);
     setCustomTip(e.target.value);
     props.onTipChange(e.target.value);
   };
@@ -41,27 +41,27 @@ const TipOptions = (props) => {
   return (
     <div className="input-container">
       <p className="input-label">{props.label}</p>
-      <div className="tip-btns-group">
+      <div className="options-group">
         {props.options.map((option, i) => {
           return (
             <Option
-              className={selectedOptionId === i ? 'tip-btn--active' : ''}
+              className={selectedOptionId === i ? 'option--active' : ''}
               value={option}
               id={i}
               key={i}
-              onSelected={onTipSelected}
+              onSelected={onOptionSelected}
             />
           );
         })}
         <Input
           className="custom-tip-input"
+          id="custom-tip"
           input={{
             type: 'number',
             placeholder: 'Custom',
-            'data-id': 'custom-tip',
             value: customTip,
-            onChange: onCustomTipChangeHandler,
-            onFocus: onCustomTipChangeHandler,
+            onChange: onCustomOptionChangeHandler,
+            onFocus: onCustomOptionChangeHandler,
           }}
         />
       </div>

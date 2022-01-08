@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import '../styles/SplitForm.css';
-import Input from './ui/Input';
+import './SplitForm.css';
+import Input from '../ui/Input';
 import TipOptions from './TipOptions';
-import CalculatorContext from '../store/calculator-context';
+import CalculatorContext from '../../store/calculator-context';
 
 const SplitForm = (props) => {
   const { bill, tip, persons, isPersonsValid } = useContext(CalculatorContext);

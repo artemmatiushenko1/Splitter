@@ -1,0 +1,23 @@
+.output-card__btn-reset {
+  align-self: end;
+  background-color: var(--color-primary);
+  border: none;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 1.2rem 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.output-card__btn-reset:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.output-card__btn-reset:hover:not(:disabled) {
+  background-color: var(--color-btn-hover);
+}

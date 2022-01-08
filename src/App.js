@@ -1,5 +1,5 @@
 import './App.css';
-import Calculator from './components/Calculator.jsx';
+import Calculator from './components/Calculator/Calculator';
 import { ReactComponent as LogoIcon } from './assets/images/logo.svg';
 
 const App = () => {
