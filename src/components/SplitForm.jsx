@@ -1,33 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import '../styles/InputsCard.css';
 import Input from './ui/Input';
 import TipOptions from './TipOptions';
+import CalculatorContext from '../store/calculator-context';
 
 const SplitForm = (props) => {
-  const [bill, setBill] = useState('');
-  const [tip, setTip] = useState('');
-  const [persons, setPersons] = useState('');
-  const [isPersonsValid, setIsPersonsValid] = useState(null);
-
-  const billChangeHandler = (e) => {
-    setBill(e.target.value);
-    props.onInput({ bill: e.target.value });
-  };
-
-  const tipChangeHandler = (tipValue) => {
-    setTip(tipValue);
-    props.onInput({ tip: tipValue });
-  };
-
-  const personsChangeHandler = (e) => {
-    setPersons(e.target.value);
-    if (e.target.value === '0') {
-      setIsPersonsValid(false);
-      return;
-    }
-    setIsPersonsValid(true);
-    props.onInput({ persons: e.target.value });
-  };
+  const { bill, tip, persons, isPersonsValid } = useContext(CalculatorContext);
 
   return (
     <form className="inputs-card" autoComplete="off">
@@ -40,14 +18,14 @@ const SplitForm = (props) => {
           type: 'number',
           value: bill,
           placeholder: '0',
-          onChange: billChangeHandler,
+          onChange: props.onBillInput,
         }}
       />
       <TipOptions
         value={tip}
         options={[5, 10, 15, 25, 50]}
         label="Select tip %"
-        onTipChange={tipChangeHandler}
+        onTipChange={props.onTipInput}
       />
       <Input
         label="Number of People"
@@ -60,7 +38,7 @@ const SplitForm = (props) => {
           type: 'number',
           value: persons,
           placeholder: '0',
-          onChange: personsChangeHandler,
+          onChange: props.onPersonsInput,
         }}
       />
     </form>

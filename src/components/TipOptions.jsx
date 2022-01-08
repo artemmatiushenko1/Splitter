@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/TipSelect.css';
 import Input from './ui/Input';
 
@@ -16,8 +16,15 @@ const Option = (props) => {
 };
 
 const TipOptions = (props) => {
-  const [selectedOptionId, setSelectedOptionId] = useState(props.value);
+  const [selectedOptionId, setSelectedOptionId] = useState('');
   const [customTip, setCustomTip] = useState('');
+
+  useEffect(() => {
+    if (props.value === '') {
+      setSelectedOptionId('');
+      setCustomTip('');
+    }
+  }, [props.value]);
 
   const onTipSelected = (e) => {
     e.preventDefault();

@@ -1,50 +1,78 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/Calculator.css';
 import ComputedCard from './ComputedCard';
 import SplitForm from './SplitForm';
 import CalculatorContext from '../store/calculator-context';
 
 const Calculator = () => {
-  const [enteredData, setEnteredData] = useState({
-    bill: '',
-    tip: '',
-    persons: '',
-  });
+  const [bill, setBill] = useState('');
+  const [tip, setTip] = useState('');
+  const [persons, setPersons] = useState('');
+  const [isPersonsValid, setIsPersonsValid] = useState(null);
+  const [tipPerPerson, setTipPerPerson] = useState('');
+  const [totalPerPerson, setTotalPerPerson] = useState('');
 
-  const calculateTip = (bill, tip, persons) => {
-    const result = (bill * tip) / 100 / persons;
-    return result;
+  useEffect(() => {
+    if (bill && persons) {
+      calculate(bill, persons);
+    }
+
+    if (bill && persons && tip) {
+      calculate(bill, persons, tip);
+    }
+  }, [bill, tip, persons]);
+
+  const calculate = (bill, persons, tip = 0) => {
+    const calculatedTip = (bill * tip) / 100 / persons;
+    const calculatedTotal = bill / persons + calculatedTip;
+    setTipPerPerson(calculatedTip);
+    setTotalPerPerson(calculatedTotal);
   };
 
-  const calculateTotal = (bill, tip, persons) => {
-    const tipPerPerson = calculateTip(bill, persons, tip);
-    const totalPerPerson = bill / persons + tip;
-    return {
-      tip: tipPerPerson,
-      total: totalPerPerson,
-    };
+  const onBillChangeHandler = (e) => {
+    setBill(e.target.value);
   };
 
-  const onFormInputHandler = (data) => {
-    setEnteredData((prevState) => {
-      return {
-        ...prevState,
-        ...data,
-      };
-    });
+  const onTipChangeHandler = (tipValue) => {
+    setTip(tipValue);
+  };
+
+  const onPersonsChangeHandler = (e) => {
+    if (e.target.value === '0') {
+      setIsPersonsValid(false);
+      return;
+    }
+    setIsPersonsValid(true);
+    setPersons(e.target.value);
+  };
+
+  const onFormResetHandler = () => {
+    setBill('');
+    setPersons('');
+    setTip('');
+    setIsPersonsValid(null);
+    setTipPerPerson('');
+    setTotalPerPerson('');
   };
 
   return (
-    <CalculatorContext.Provider value={{ ...enteredData }}>
+    <CalculatorContext.Provider
+      value={{
+        bill,
+        tip,
+        persons,
+        isPersonsValid,
+        tipPerPerson,
+        totalPerPerson,
+      }}
+    >
       <div className="calculator">
-        <SplitForm onInput={onFormInputHandler} />
-        <ComputedCard
-          values={calculateTotal(
-            parseInt(enteredData.bill),
-            parseInt(enteredData.tip),
-            parseInt(enteredData.persons)
-          )}
+        <SplitForm
+          onBillInput={onBillChangeHandler}
+          onTipInput={onTipChangeHandler}
+          onPersonsInput={onPersonsChangeHandler}
         />
+        <ComputedCard onReset={onFormResetHandler} />
       </div>
     </CalculatorContext.Provider>
   );
