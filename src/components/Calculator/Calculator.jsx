@@ -11,7 +11,13 @@ const Calculator = () => {
   const [state, dispatch] = useReducer(calculatorReducer, initialState);
 
   useEffect(() => {
-    dispatch({ type: 'CALCULATE' });
+    const debounceTimerId = setTimeout(() => {
+      dispatch({ type: 'CALCULATE' });
+    }, 200);
+
+    return () => {
+      clearTimeout(debounceTimerId);
+    };
   }, [state.bill, state.tip, state.persons]);
 
   const onBillChangeHandler = (e) => {
