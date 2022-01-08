@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   bill: '',
   tip: '',
   persons: '',
@@ -8,18 +8,12 @@ const initialState = {
 };
 
 const calculate = (bill, persons, tip) => {
-  let calculatedTip;
-  let calculatedTotal;
-  if ((!tip && !persons) || !persons) {
-    calculatedTip = '';
-    calculatedTotal = '';
-  }
-  calculatedTip = (bill * tip) / 100 / persons;
-  calculatedTotal = bill / persons + calculatedTip;
+  const tipPerPerson = persons ? (bill * tip) / 100 / persons : 0;
+  const totalPerPerson = persons ? bill / persons + tipPerPerson : 0;
 
   return {
-    calculatedTip,
-    calculatedTotal,
+    tipPerPerson,
+    totalPerPerson,
   };
 };
 
@@ -36,26 +30,28 @@ const calculatorReducer = (prevState, action) => {
         tip: action.value,
       };
     case 'PERSONS_INPUT':
-      const isPersonsValid = action.value === '0' ? false : true;
+      const persons = action.value;
+      const isPersonsValid = persons === '0' ? false : true;
       return {
         ...prevState,
-        persons: action.value,
+        persons,
         isPersonsValid,
       };
     case 'CALCULATE':
       const { tipPerPerson, totalPerPerson } = calculate(
-        prevState.bill,
-        prevState.persons,
-        prevState.tip
+        Number(prevState.bill),
+        Number(prevState.persons),
+        Number(prevState.tip)
       );
       return {
         ...prevState,
         tipPerPerson,
         totalPerPerson,
       };
-
+    case 'RESET':
+      return initialState;
     default:
-      return 0;
+      throw new Error('Unknown action type');
   }
 };
 

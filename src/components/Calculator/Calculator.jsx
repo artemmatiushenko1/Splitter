@@ -1,66 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import './Calculator.css';
 import OutputCard from '../OutputCard/OutputCard';
 import SplitForm from '../SplitForm/SplitForm';
 import CalculatorContext from '../../store/calculator-context';
+import calculatorReducer, {
+  initialState,
+} from '../../reducers/calculator-reducer';
 
 const Calculator = () => {
-  const [bill, setBill] = useState('');
-  const [tip, setTip] = useState('');
-  const [persons, setPersons] = useState('');
-  const [isPersonsValid, setIsPersonsValid] = useState(null);
-  const [tipPerPerson, setTipPerPerson] = useState('');
-  const [totalPerPerson, setTotalPerPerson] = useState('');
-
-  const calculate = (bill, persons, tip) => {
-    if ((!tip && !persons) || !persons) {
-      setTipPerPerson('');
-      setTotalPerPerson('');
-      return;
-    }
-    const calculatedTip = (bill * tip) / 100 / persons;
-    const calculatedTotal = bill / persons + calculatedTip;
-    setTipPerPerson(calculatedTip);
-    setTotalPerPerson(calculatedTotal);
-  };
+  const [state, dispatch] = useReducer(calculatorReducer, initialState);
 
   useEffect(() => {
-    calculate(bill, persons, tip);
-  }, [bill, tip, persons]);
+    dispatch({ type: 'CALCULATE' });
+  }, [state.bill, state.tip, state.persons]);
 
   const onBillChangeHandler = (e) => {
-    setBill(e.target.value);
+    dispatch({ type: 'BILL_INPUT', value: e.target.value });
   };
 
   const onTipChangeHandler = (tipValue) => {
-    setTip(tipValue);
+    dispatch({ type: 'TIP_INPUT', value: tipValue });
   };
 
   const onPersonsChangeHandler = (e) => {
-    if (e.target.value === '0') {
-      setIsPersonsValid(false);
-      return;
-    }
-    setIsPersonsValid(true);
-    setPersons(e.target.value);
+    dispatch({ type: 'PERSONS_INPUT', value: e.target.value });
   };
 
   const onFormResetHandler = () => {
-    setBill('');
-    setPersons('');
-    setTip('');
-    setIsPersonsValid(null);
-    setTipPerPerson('');
-    setTotalPerPerson('');
+    dispatch({ type: 'RESET' });
   };
 
   const providedValues = {
-    bill,
-    tip,
-    persons,
-    isPersonsValid,
-    tipPerPerson,
-    totalPerPerson,
+    bill: state.bill,
+    tip: state.tip,
+    persons: state.persons,
+    isPersonsValid: state.isPersonsValid,
+    tipPerPerson: state.tipPerPerson,
+    totalPerPerson: state.totalPerPerson,
   };
 
   return (
