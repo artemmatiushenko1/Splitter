@@ -13,7 +13,7 @@ const Calculator = () => {
   useEffect(() => {
     const debounceTimerId = setTimeout(() => {
       dispatch({ type: 'CALCULATE' });
-    }, 200);
+    }, 150);
 
     return () => {
       clearTimeout(debounceTimerId);

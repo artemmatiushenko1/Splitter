@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './TipOptions.css';
 import Input from '../ui/Input';
-
-const Option = (props) => {
-  return (
-    <button
-      className={`option ${props.className}`}
-      data-tip={props.value}
-      data-id={props.id}
-      onClick={props.onSelected}
-    >
-      {props.value}%
-    </button>
-  );
-};
+import Option from './Option';
 
 const TipOptions = (props) => {
   const [selectedOptionId, setSelectedOptionId] = useState('');

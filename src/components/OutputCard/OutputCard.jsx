@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import './OutputCard.css';
 import Output from './Output';
 import CalculatorContext from '../../store/calculator-context';
-import './OutputCard.css';
 import ResetButton from './ResetButton';
 
 const OutputCard = (props) => {

@@ -4,29 +4,6 @@
   gap: 1.3rem;
 }
 
-.option {
-  font-size: 2rem;
-  font-family: inherit;
-  border: none;
-  color: var(--color-tertiary);
-  font-weight: 700;
-  border-radius: 0.5rem;
-  padding: 0.7rem 0;
-  background-color: var(--color-secondary);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.option--active {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-}
-
-.option:hover {
-  background-color: var(--color-btn-hover);
-  color: var(--color-secondary);
-}
-
 .custom-tip-input {
   text-align: center;
   padding: 0.4rem 1rem;

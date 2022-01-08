@@ -2,6 +2,7 @@ import './Output.css';
 
 const Output = (props) => {
   const value = Number(props.value).toFixed(2);
+
   return (
     <div className="output">
       <h2 className="output__title">
