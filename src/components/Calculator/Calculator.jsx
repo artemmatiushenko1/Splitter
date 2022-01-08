@@ -12,22 +12,21 @@ const Calculator = () => {
   const [tipPerPerson, setTipPerPerson] = useState('');
   const [totalPerPerson, setTotalPerPerson] = useState('');
 
-  useEffect(() => {
-    if (bill && persons) {
-      calculate(bill, persons);
+  const calculate = (bill, persons, tip) => {
+    if ((!tip && !persons) || !persons) {
+      setTipPerPerson('');
+      setTotalPerPerson('');
+      return;
     }
-
-    if (bill && persons && tip) {
-      calculate(bill, persons, tip);
-    }
-  }, [bill, tip, persons]);
-
-  const calculate = (bill, persons, tip = 0) => {
     const calculatedTip = (bill * tip) / 100 / persons;
     const calculatedTotal = bill / persons + calculatedTip;
     setTipPerPerson(calculatedTip);
     setTotalPerPerson(calculatedTotal);
   };
+
+  useEffect(() => {
+    calculate(bill, persons, tip);
+  }, [bill, tip, persons]);
 
   const onBillChangeHandler = (e) => {
     setBill(e.target.value);
