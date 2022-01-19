@@ -1,6 +1,6 @@
 import './App.css';
-import Calculator from './components/Calculator/Calculator';
-import { ReactComponent as LogoIcon } from './assets/images/logo.svg';
+import Calculator from '../components/calculator/Calculator';
+import { ReactComponent as LogoIcon } from '../assets/images/logo.svg';
 
 const App = () => {
   return (

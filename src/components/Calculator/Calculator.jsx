@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import './Calculator.css';
-import OutputCard from '../OutputCard/OutputCard';
-import SplitForm from '../SplitForm/SplitForm';
+import OutputCard from '../output-card/OutputCard';
+import SplitForm from '../split-form/SplitForm';
 import CalculatorContext from '../../store/calculator-context';
 import calculatorReducer, {
   initialState,

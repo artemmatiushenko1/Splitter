@@ -1,11 +1,11 @@
 import './ResetButton.css';
 
-const ResetButton = (props) => {
+const ResetButton = ({ onClick, disabled }) => {
   return (
     <button
       className="output-card__btn-reset"
-      onClick={props.onClick}
-      disabled={props.disabled}
+      onClick={onClick}
+      disabled={disabled}
     >
       Reset
     </button>

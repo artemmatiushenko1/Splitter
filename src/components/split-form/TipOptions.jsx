@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import './TipOptions.css';
-import Input from '../ui/Input';
+import Input from '../basic/Input';
 import Option from './Option';
 
-const TipOptions = (props) => {
+const TipOptions = ({ value, onTipChange, label, options }) => {
   const [selectedOptionId, setSelectedOptionId] = useState('');
   const [customTip, setCustomTip] = useState('');
 
   useEffect(() => {
-    if (props.value === '') {
+    if (value === '') {
       setSelectedOptionId('');
       setCustomTip('');
     }
-  }, [props.value]);
+  }, [value]);
 
   const onOptionSelected = (e) => {
     e.preventDefault();
     setSelectedOptionId(parseInt(e.target.dataset['id']));
-    props.onTipChange(e.target.dataset['tip']);
+    onTipChange(e.target.dataset['tip']);
   };
 
   const onCustomOptionChangeHandler = (e) => {
     setSelectedOptionId(e.target.id);
     setCustomTip(e.target.value);
-    props.onTipChange(e.target.value);
+    onTipChange(e.target.value);
   };
 
   return (
     <div className="input-container">
-      <p className="input-label">{props.label}</p>
+      <p className="input-label">{label}</p>
       <div className="options-group">
-        {props.options.map((option, i) => {
+        {options.map((option, i) => {
           return (
             <Option
               className={selectedOptionId === i ? 'option--active' : ''}

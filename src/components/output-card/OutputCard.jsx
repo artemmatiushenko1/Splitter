@@ -4,7 +4,7 @@ import Output from './Output';
 import CalculatorContext from '../../store/calculator-context';
 import ResetButton from './ResetButton';
 
-const OutputCard = (props) => {
+const OutputCard = ({ onReset }) => {
   const { bill, persons, tip, tipPerPerson, totalPerPerson } =
     useContext(CalculatorContext);
 
@@ -13,7 +13,7 @@ const OutputCard = (props) => {
       <Output title="Tip amount" value={tipPerPerson} />
       <Output title="Total" value={totalPerPerson} />
       <ResetButton
-        onClick={props.onReset}
+        onClick={onReset}
         disabled={bill || persons || tip ? false : true}
       />
     </div>

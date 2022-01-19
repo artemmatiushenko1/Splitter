@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import './SplitForm.css';
-import Input from '../ui/Input';
+import Input from '../basic/Input';
 import TipOptions from './TipOptions';
 import CalculatorContext from '../../store/calculator-context';
 
-const SplitForm = (props) => {
+const SplitForm = ({ onBillInput, onTipInput, onPersonsInput }) => {
   const { bill, tip, persons, isPersonsValid } = useContext(CalculatorContext);
 
   return (
@@ -18,14 +18,14 @@ const SplitForm = (props) => {
           type: 'number',
           value: bill,
           placeholder: '0',
-          onChange: props.onBillInput,
+          onChange: onBillInput,
         }}
       />
       <TipOptions
         value={tip}
         options={[5, 10, 15, 25, 50]}
         label="Select tip %"
-        onTipChange={props.onTipInput}
+        onTipChange={onTipInput}
       />
       <Input
         label="Number of People"
@@ -38,7 +38,7 @@ const SplitForm = (props) => {
           type: 'number',
           value: persons,
           placeholder: '0',
-          onChange: props.onPersonsInput,
+          onChange: onPersonsInput,
         }}
       />
     </form>
